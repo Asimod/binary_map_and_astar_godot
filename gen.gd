@@ -6,7 +6,7 @@ extends Node2D
 # var b="textvar"
 var height = 50
 var width = 100
-var _seed = ''
+var _seed = '1469442477'
 var randomFeelPercent = 45
 var smooth = 5
 var map = []
@@ -84,11 +84,37 @@ func GetSorroundWallCount(gridX, gridY):
 		neighbourX+=1
 	return wallCount
 
+func turn(a):
+	var ar = []
+	var x = 0 
+	while x < height: 
+		var y = 0
+		var tmp = []
+		while y < width: 
+			tmp.append(0)
+			y+=1
+		ar.append(tmp)
+		x+=1
+		
+	var i = 0
+	while i < height:
+		var j = 0
+		while j < width:
+			ar[i][j] = a[j][i]
+			j+=1
+		i+=1
+	var tmp = height
+	height = width
+	width = tmp
+	return ar
+
+
 					
 func _draw():
 	var colors = {1:Color(0,0,0), 0:Color(1,1,1)}
 	var SIZE_RECT = 10
 	var i = 0 
+	map = turn(map)
 	while (i < width): 
 		var j = 0
 		while (j < height): 	
